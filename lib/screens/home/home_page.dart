@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:movie_review/screens/menu/HomeMenu.dart';
+import 'package:movie_review/screens/menu/home_menu.dart';
 
 import '../../constants.dart';
-import 'components/HomeBody.dart';
+import 'components/home_body.dart';
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -56,7 +56,7 @@ class _HomePageState extends State<HomePage> {
       decoration: const InputDecoration(
         hintText: 'Search...',
         border: InputBorder.none,
-        hintStyle: const TextStyle(color: Colors.white30),
+        hintStyle: const TextStyle(color: kTextLightColor),
       ),
       style: const TextStyle(color: kTextLightColor, fontSize: 16.0),
       onChanged: updateSearchQuery,
@@ -95,15 +95,6 @@ class _HomePageState extends State<HomePage> {
       ),
     ];
   }
-
-  var menuIcon = IconButton(
-    padding: EdgeInsets.only(left: kDefaultPadding),
-    icon: Icon(Icons.menu, color: kTextLightColor,),
-    onPressed: () {
-      print('click menu button');
-      scaffoldKey.currentState.openDrawer();
-    },
-  );
 
   var menuButton= IconButton(
     padding: EdgeInsets.only(left: kDefaultPadding),
