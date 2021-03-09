@@ -14,7 +14,7 @@ class _HomeMenuState extends State<HomeMenu>{
       children: <Widget>[
         DrawerHeader(
           decoration: BoxDecoration(
-              color: Colors.grey.shade500
+            color: Colors.blueGrey,
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -60,25 +60,29 @@ class _HomeMenuState extends State<HomeMenu>{
         ListTile(
             title: Text(
                 "My Profile", style: TextStyle(fontSize: 16, color: kTextLightColor)),
-            leading: Icon(Icons.person)
+            leading: Icon(Icons.person),
+            onTap: (){},
         ),
         ListTile(
           leading: Icon(Icons.history),
           title: Text(
             "History", style: TextStyle(fontSize: 16, color: kTextLightColor),
           ),
+          onTap: (){},
         ),
         ListTile(
             leading: Icon(Icons.settings),
             title: Text(
               "Settings", style: TextStyle(fontSize: 16, color: kTextLightColor),
-            )
+            ),
+          onTap: (){},
         ),
         ListTile(
           leading: Icon(Icons.logout),
           title: Text(
             "Logout", style: TextStyle(fontSize: 16, color: kTextLightColor),
           ),
+          onTap: (){},
         ),
       ],
     );
