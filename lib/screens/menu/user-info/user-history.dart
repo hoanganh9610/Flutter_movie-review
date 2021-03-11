@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_review/constants.dart';
+import 'package:movie_review/screens/menu/user-info/movie/movie-item.dart';
 
 class UserHistory extends StatelessWidget{
   @override
@@ -12,8 +13,10 @@ class UserHistory extends StatelessWidget{
         backgroundColor: Colors.white,
         title: Text("History", style: TextStyle(color: kTextLightColor),),
       ),
-      body: Center(child: Text("History")),
-    );
+      body: SingleChildScrollView(
+        child: MovieItem()
+        )
+      );
   }
   
 }

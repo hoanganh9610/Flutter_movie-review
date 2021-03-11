@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:movie_review/screens/menu/help-center.dart';
+import 'package:movie_review/screens/menu/notification.dart';
+import 'package:movie_review/screens/menu/setting.dart';
 import 'package:movie_review/screens/menu/user-info/my-account.dart';
 
 import '../../constants.dart';
@@ -142,6 +145,8 @@ class _HomeMenuState extends State<HomeMenu> {
                 title: Text('Notifications',
                     style: TextStyle(fontSize: 16, color: kTextLightColor)),
                 onTap: () {
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (context) => NotificationPage()));
                   // Here you can give your route to navigate
                 },
               ),
@@ -153,7 +158,8 @@ class _HomeMenuState extends State<HomeMenu> {
                 title: Text('Settings',
                     style: TextStyle(fontSize: 16, color: kTextLightColor)),
                 onTap: () {
-                  // Here you can give your route to navigate
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (context) => Setting()));
                 },
               ),
             ),
@@ -164,7 +170,8 @@ class _HomeMenuState extends State<HomeMenu> {
                 title: Text('Help Center',
                     style: TextStyle(fontSize: 16, color: kTextLightColor)),
                 onTap: () {
-                  // Here you can give your route to navigate
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (context) => HelpCenter()));
                 },
               ),
             ),
