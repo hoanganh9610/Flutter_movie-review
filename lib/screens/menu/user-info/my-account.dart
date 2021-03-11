@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:movie_review/constants.dart';
 import 'package:movie_review/screens/menu/user-info/user-history.dart';
 import 'package:movie_review/screens/menu/user-info/user-info.dart';
 import 'package:movie_review/screens/menu/user-info/user-manage.dart';
@@ -26,9 +27,9 @@ class _MyAccountState extends State<MyAccount> {
     if(this._selectedIndex == 0) {
       return this._myProfile;
     } else if(this._selectedIndex==1) {
-      return this._manageFilm;
-    } else {
       return this._myHistory;
+    } else {
+      return this._manageFilm;
     }
   }
 
@@ -58,7 +59,7 @@ class _MyAccountState extends State<MyAccount> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
+        selectedItemColor: kSecondaryColor,
         onTap: _onItemTapped,
       ),
     );

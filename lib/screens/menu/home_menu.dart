@@ -119,7 +119,7 @@ class _HomeMenuState extends State<HomeMenu> {
                   title: Text('Home',
                       style: TextStyle(fontSize: 16, color: kTextLightColor)),
                   onTap: () {
-                    // Here you can give your route to navigate
+                    Navigator.of(context).pop();
                   },
                 ),
             ),

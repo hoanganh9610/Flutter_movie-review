@@ -68,12 +68,37 @@ class _UserInfoState extends State<UserInfo>{
     return DateFormat.yMMMd().format(_fromDate);
   }
 
+  Widget _getCamera(){
+    return isEdit?
+        MaterialButton(
+          child: CircleAvatar(
+              child: IconButton(icon: Icon(Icons.camera_alt)),
+              backgroundImage:
+              AssetImage("assets/images/user.png"),
+              radius: 40.0,
+            ),
+            onPressed: (){
+
+        }):
+    // :
+    Padding(
+      child: CircleAvatar(
+        backgroundImage:
+        AssetImage("assets/images/user.png"),
+        radius: 40.0,
+      ),
+        padding: EdgeInsets.only(left: 16, right: 16)
+    );
+
+  }
+
   Future<void> _showDatePicker(BuildContext context) async {
     final picked = await showDatePicker(
         context: context,
         initialDate: _fromDate,
         firstDate: DateTime(2015, 1),
-        lastDate: DateTime(2100));
+        lastDate: DateTime(2100)
+    );
     if (picked != null && picked != _fromDate) {
       setState(() {
         _fromDate = picked;
@@ -97,108 +122,92 @@ class _UserInfoState extends State<UserInfo>{
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      body: Column(
-        children: [
-          Container(
-              padding: EdgeInsets.only(top: 30),
-              color: Colors.blueGrey,
-              alignment: Alignment.topLeft,
-              child: Column(
-                children: [
-                  Row(
+      appBar: AppBar(
+        leading: IconButton(icon: Icon(Icons.arrow_back, color: kTextLightColor,), onPressed: (){
+          Navigator.of(context).pop();
+        },),
+        backgroundColor: Colors.white,
+        title: Text("Personal Information", style: TextStyle(color: kTextLightColor, fontSize: 16)),
+
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+                padding: EdgeInsets.only(top: 30),
+                color: Colors.blueGrey,
+                alignment: Alignment.topLeft,
+                child: Container(
+                  padding: EdgeInsets.only(left: 10, bottom: 30),
+                  child: Row(
                     children: [
-                      IconButton(
-                          icon: Icon(
-                            Icons.arrow_back,
-                            color: Colors.white,
-                          ),
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          }),
-                      //Expanded(child: Text(""))
+                      _getCamera(),
+                      Expanded(
+                        flex: 1,
+                        child: Row(
+                          children: [displayName(), _applyName()],
+                        ),
+                      )
                     ],
                   ),
-                  Container(
-                    padding: EdgeInsets.only(left: 20, bottom: 30),
-                    child: Row(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(right: 20),
-                          child: CircleAvatar(
-                            backgroundImage:
-                                AssetImage("assets/images/user.png"),
-                            radius: 40.0,
-                          ),
-                        ),
-                        Expanded(
-                          flex: 1,
-                          child: Row(
-                            children: [displayName(), _applyName()],
-                          ),
-                        )
-                      ],
-                    ),
+                )),
+            ListTile(
+              leading: Icon(Icons.person_outlined),
+              title: Row(
+                children: [
+                  Expanded(
+                    child: Text('Name: ',
+                        style: TextStyle(fontSize: 16, color: kTextLightColor)),
                   ),
-
+                  Text('Anthony Nguyễn',
+                      style: TextStyle(fontSize: 16, color: kTextLightColor)),
                 ],
-              )),
-          ListTile(
-            leading: Icon(Icons.person_outlined),
-            title: Row(
-              children: [
-                Expanded(
-                  child: Text('Name: ',
-                      style: TextStyle(fontSize: 16, color: kTextLightColor)),
-                ),
-                Text('Anthony Nguyễn',
-                    style: TextStyle(fontSize: 16, color: kTextLightColor)),
-              ],
+              ),
+              onTap: () {
+                // Here you can give your route to navigate
+              },
             ),
-            onTap: () {
-              // Here you can give your route to navigate
-            },
-          ),
-          Divider(
-            color: kTextLightColor,
-          ),
-          ListTile(
-            leading: Icon(Icons.email_outlined),
-            title: Row(
-              children: [
-                Expanded(
-                  child: Text('Email: ',
-                      style: TextStyle(fontSize: 16, color: kTextLightColor)),
-                ),
-                Text('skycloud1096@gmail.com',
-                    style: TextStyle(fontSize: 16, color: kTextLightColor)),
-              ],
+            Divider(
+              color: kTextLightColor,
             ),
-            onTap: () {
+            ListTile(
+              leading: Icon(Icons.email_outlined),
+              title: Row(
+                children: [
+                  Expanded(
+                    child: Text('Email: ',
+                        style: TextStyle(fontSize: 16, color: kTextLightColor)),
+                  ),
+                  Text('skycloud1096@gmail.com',
+                      style: TextStyle(fontSize: 16, color: kTextLightColor)),
+                ],
+              ),
+              onTap: () {
 
-            },
-          ),
-          Divider(
-            color: kTextLightColor,
-          ),
-          ListTile(
-            leading: Icon(Icons.calendar_today),
-            title: Row(
-              children: [
-                Expanded(
-                  child: Text('Birth day: ',
-                      style: TextStyle(fontSize: 16, color: kTextLightColor)),
-                ),
-                Text(_labelText,
-                    style: TextStyle(fontSize: 16, color: kTextLightColor)),
-              ],
+              },
             ),
-            onTap: () {
-              _showDatePicker(context);
-            },
-          ),
-          //_widgetOptions.elementAt(_selectedIndex)
-        ],
-      ),
+            Divider(
+              color: kTextLightColor,
+            ),
+            ListTile(
+              leading: Icon(Icons.calendar_today),
+              title: Row(
+                children: [
+                  Expanded(
+                    child: Text('Birth day: ',
+                        style: TextStyle(fontSize: 16, color: kTextLightColor)),
+                  ),
+                  Text(_labelText,
+                      style: TextStyle(fontSize: 16, color: kTextLightColor)),
+                ],
+              ),
+              onTap: () {
+                _showDatePicker(context);
+              },
+            ),
+          ],
+        ),
+      )
     );
   }
 

@@ -39,7 +39,7 @@ class _CategoryListState extends State<CategoryList> {
           children: <Widget>[
             Text(
               categories[index],
-              style: Theme.of(context).textTheme.headline5.copyWith(
+              style: Theme.of(context).textTheme.headline6.copyWith(
                 fontWeight: FontWeight.w600,
                 color: index == selectedCategory
                     ? kTextColor
